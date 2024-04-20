@@ -1,0 +1,681 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+
+<link href='https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext' rel='stylesheet' type='text/css' /><style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color:#ffffff; --text-color:#333333; --select-text-bg-color:#B5D6FC; --select-text-font-color:auto; --monospace:"Lucida Console",Consolas,"Courier",monospace; --title-bar-height:20px; }
+.mac-os-11 { --title-bar-height:28px; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+body { margin: 0px; padding: 0px; height: auto; inset: 0px; font-size: 1rem; line-height: 1.42857; overflow-x: hidden; background: inherit; tab-size: 4; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; overflow-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 36px; }
+#write.first-line-indent p { text-indent: 2em; }
+#write.first-line-indent li p, #write.first-line-indent p * { text-indent: 0px; }
+#write.first-line-indent li { margin-left: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
+.typora-export .task-list-item input { pointer-events: none; }
+@media screen and (max-width: 500px) {
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  #write { padding-left: 20px; padding-right: 20px; }
+  .CodeMirror-sizer { margin-left: 0px !important; }
+  .CodeMirror-gutters { display: none !important; }
+}
+#write li > figure:last-child { margin-bottom: 0.5rem; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; image-orientation: from-image; }
+button, input, select, textarea { color: inherit; font: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p { position: relative; }
+p { line-height: inherit; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 4; }
+p { orphans: 4; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px; }
+tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 32px; }
+.CodeMirror-gutters { border-right: 0px; background-color: inherit; }
+.CodeMirror-linenumber { user-select: none; }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background: inherit; position: relative !important; }
+.md-fences-adv-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; background: 0px 0px; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; -webkit-tap-highlight-color: transparent; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li blockquote { margin: 1rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print {
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; font-variant-ligatures: no-common-ligatures; }
+  #write { margin-top: 0px; padding-top: 0px; border-color: transparent !important; }
+  .typora-export * { -webkit-print-color-adjust: exact; }
+  .typora-export #write { break-after: avoid; }
+  .typora-export #write::after { height: 0px; }
+  .is-mac table { break-inside: avoid; }
+  .typora-export-show-outline .typora-export-sidebar { display: none; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background: rgb(204, 204, 204); display: block; overflow-x: hidden; }
+p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+#write.first-line-indent p > .md-image:only-child:not(.md-img-error) img { left: -2em; position: relative; }
+p > .md-image:only-child { display: inline-block; width: 100%; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+.MathJax_ref { fill: currentcolor; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: none; }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { text-decoration: underline; }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) {
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.6; font-family: var(--monospace); }
+code { text-align: left; vertical-align: initial; }
+a.md-print-anchor { white-space: pre !important; border-width: initial !important; border-style: none !important; border-color: initial !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; background: 0px 0px !important; text-decoration: initial !important; text-shadow: initial !important; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom: 0px; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: none; }
+.highlight td, .highlight tr { border: 0px; }
+mark { background: rgb(255, 255, 0); color: rgb(0, 0, 0); }
+.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
+.md-expand mark .md-meta { opacity: 0.3 !important; }
+mark .md-meta { color: rgb(0, 0, 0); }
+@media print {
+  .typora-export h1, .typora-export h2, .typora-export h3, .typora-export h4, .typora-export h5, .typora-export h6 { break-inside: avoid; }
+}
+.md-diagram-panel .messageText { stroke: none !important; }
+.md-diagram-panel .start-state { fill: var(--node-fill); }
+.md-diagram-panel .edgeLabel rect { opacity: 1 !important; }
+.md-fences.md-fences-math { font-size: 1em; }
+.md-fences-advanced:not(.md-focus) { padding: 0px; white-space: nowrap; border: 0px; }
+.md-fences-advanced:not(.md-focus) { background: inherit; }
+.typora-export-show-outline .typora-export-content { max-width: 1440px; margin: auto; display: flex; flex-direction: row; }
+.typora-export-sidebar { width: 300px; font-size: 0.8rem; margin-top: 80px; margin-right: 18px; }
+.typora-export-show-outline #write { --webkit-flex:2; flex: 2 1 0%; }
+.typora-export-sidebar .outline-content { position: fixed; top: 0px; max-height: 100%; overflow: hidden auto; padding-bottom: 30px; padding-top: 60px; width: 300px; }
+@media screen and (max-width: 1024px) {
+  .typora-export-sidebar, .typora-export-sidebar .outline-content { width: 240px; }
+}
+@media screen and (max-width: 800px) {
+  .typora-export-sidebar { display: none; }
+}
+.outline-content li, .outline-content ul { margin-left: 0px; margin-right: 0px; padding-left: 0px; padding-right: 0px; list-style: none; }
+.outline-content ul { margin-top: 0px; margin-bottom: 0px; }
+.outline-content strong { font-weight: 400; }
+.outline-expander { width: 1rem; height: 1.42857rem; position: relative; display: table-cell; vertical-align: middle; cursor: pointer; padding-left: 4px; }
+.outline-expander::before { content: ""; position: relative; font-family: Ionicons; display: inline-block; font-size: 8px; vertical-align: middle; }
+.outline-item { padding-top: 3px; padding-bottom: 3px; cursor: pointer; }
+.outline-expander:hover::before { content: ""; }
+.outline-h1 > .outline-item { padding-left: 0px; }
+.outline-h2 > .outline-item { padding-left: 1em; }
+.outline-h3 > .outline-item { padding-left: 2em; }
+.outline-h4 > .outline-item { padding-left: 3em; }
+.outline-h5 > .outline-item { padding-left: 4em; }
+.outline-h6 > .outline-item { padding-left: 5em; }
+.outline-label { cursor: pointer; display: table-cell; vertical-align: middle; text-decoration: none; color: inherit; }
+.outline-label:hover { text-decoration: underline; }
+.outline-item:hover { border-color: rgb(245, 245, 245); background-color: var(--item-hover-bg-color); }
+.outline-item:hover { margin-left: -28px; margin-right: -28px; border-left: 28px solid transparent; border-right: 28px solid transparent; }
+.outline-item-single .outline-expander::before, .outline-item-single .outline-expander:hover::before { display: none; }
+.outline-item-open > .outline-item > .outline-expander::before { content: ""; }
+.outline-children { display: none; }
+.info-panel-tab-wrapper { display: none; }
+.outline-item-open > .outline-children { display: block; }
+.typora-export .outline-item { padding-top: 1px; padding-bottom: 1px; }
+.typora-export .outline-item:hover { margin-right: -8px; border-right: 8px solid transparent; }
+.typora-export .outline-expander::before { content: "+"; font-family: inherit; top: -1px; }
+.typora-export .outline-expander:hover::before, .typora-export .outline-item-open > .outline-item > .outline-expander::before { content: "−"; }
+.typora-export-collapse-outline .outline-children { display: none; }
+.typora-export-collapse-outline .outline-item-open > .outline-children, .typora-export-no-collapse-outline .outline-children { display: block; }
+.typora-export-no-collapse-outline .outline-expander::before { content: "" !important; }
+.typora-export-show-outline .outline-item-active > .outline-item .outline-label { font-weight: 700; }
+.md-inline-math-container mjx-container { zoom: 0.95; }
+
+
+.CodeMirror { height: auto; }
+.CodeMirror.cm-s-inner { background: inherit; }
+.CodeMirror-scroll { overflow: auto hidden; z-index: 3; }
+.CodeMirror-gutter-filler, .CodeMirror-scrollbar-filler { background-color: rgb(255, 255, 255); }
+.CodeMirror-gutters { border-right: 1px solid rgb(221, 221, 221); background: inherit; white-space: nowrap; }
+.CodeMirror-linenumber { padding: 0px 3px 0px 5px; text-align: right; color: rgb(153, 153, 153); }
+.cm-s-inner .cm-keyword { color: rgb(119, 0, 136); }
+.cm-s-inner .cm-atom, .cm-s-inner.cm-atom { color: rgb(34, 17, 153); }
+.cm-s-inner .cm-number { color: rgb(17, 102, 68); }
+.cm-s-inner .cm-def { color: rgb(0, 0, 255); }
+.cm-s-inner .cm-variable { color: rgb(0, 0, 0); }
+.cm-s-inner .cm-variable-2 { color: rgb(0, 85, 170); }
+.cm-s-inner .cm-variable-3 { color: rgb(0, 136, 85); }
+.cm-s-inner .cm-string { color: rgb(170, 17, 17); }
+.cm-s-inner .cm-property { color: rgb(0, 0, 0); }
+.cm-s-inner .cm-operator { color: rgb(152, 26, 26); }
+.cm-s-inner .cm-comment, .cm-s-inner.cm-comment { color: rgb(170, 85, 0); }
+.cm-s-inner .cm-string-2 { color: rgb(255, 85, 0); }
+.cm-s-inner .cm-meta { color: rgb(85, 85, 85); }
+.cm-s-inner .cm-qualifier { color: rgb(85, 85, 85); }
+.cm-s-inner .cm-builtin { color: rgb(51, 0, 170); }
+.cm-s-inner .cm-bracket { color: rgb(153, 153, 119); }
+.cm-s-inner .cm-tag { color: rgb(17, 119, 0); }
+.cm-s-inner .cm-attribute { color: rgb(0, 0, 204); }
+.cm-s-inner .cm-header, .cm-s-inner.cm-header { color: rgb(0, 0, 255); }
+.cm-s-inner .cm-quote, .cm-s-inner.cm-quote { color: rgb(0, 153, 0); }
+.cm-s-inner .cm-hr, .cm-s-inner.cm-hr { color: rgb(153, 153, 153); }
+.cm-s-inner .cm-link, .cm-s-inner.cm-link { color: rgb(0, 0, 204); }
+.cm-negative { color: rgb(221, 68, 68); }
+.cm-positive { color: rgb(34, 153, 34); }
+.cm-header, .cm-strong { font-weight: 700; }
+.cm-del { text-decoration: line-through; }
+.cm-em { font-style: italic; }
+.cm-link { text-decoration: underline; }
+.cm-error { color: red; }
+.cm-invalidchar { color: red; }
+.cm-constant { color: rgb(38, 139, 210); }
+.cm-defined { color: rgb(181, 137, 0); }
+div.CodeMirror span.CodeMirror-matchingbracket { color: rgb(0, 255, 0); }
+div.CodeMirror span.CodeMirror-nonmatchingbracket { color: rgb(255, 34, 34); }
+.cm-s-inner .CodeMirror-activeline-background { background: inherit; }
+.CodeMirror { position: relative; overflow: hidden; }
+.CodeMirror-scroll { height: 100%; outline: 0px; position: relative; box-sizing: content-box; background: inherit; }
+.CodeMirror-sizer { position: relative; }
+.CodeMirror-gutter-filler, .CodeMirror-hscrollbar, .CodeMirror-scrollbar-filler, .CodeMirror-vscrollbar { position: absolute; z-index: 6; display: none; outline: 0px; }
+.CodeMirror-vscrollbar { right: 0px; top: 0px; overflow: hidden; }
+.CodeMirror-hscrollbar { bottom: 0px; left: 0px; overflow: auto hidden; }
+.CodeMirror-scrollbar-filler { right: 0px; bottom: 0px; }
+.CodeMirror-gutter-filler { left: 0px; bottom: 0px; }
+.CodeMirror-gutters { position: absolute; left: 0px; top: 0px; padding-bottom: 10px; z-index: 3; overflow-y: hidden; }
+.CodeMirror-gutter { white-space: normal; height: 100%; box-sizing: content-box; padding-bottom: 30px; margin-bottom: -32px; display: inline-block; }
+.CodeMirror-gutter-wrapper { position: absolute; z-index: 4; background: 0px 0px !important; border: none !important; }
+.CodeMirror-gutter-background { position: absolute; top: 0px; bottom: 0px; z-index: 4; }
+.CodeMirror-gutter-elt { position: absolute; cursor: default; z-index: 4; }
+.CodeMirror-lines { cursor: text; }
+.CodeMirror pre { border-radius: 0px; border-width: 0px; background: 0px 0px; font-family: inherit; font-size: inherit; margin: 0px; white-space: pre; overflow-wrap: normal; color: inherit; z-index: 2; position: relative; overflow: visible; }
+.CodeMirror-wrap pre { overflow-wrap: break-word; white-space: pre-wrap; word-break: normal; }
+.CodeMirror-code pre { border-right: 30px solid transparent; width: fit-content; }
+.CodeMirror-wrap .CodeMirror-code pre { border-right: none; width: auto; }
+.CodeMirror-linebackground { position: absolute; inset: 0px; z-index: 0; }
+.CodeMirror-linewidget { position: relative; z-index: 2; overflow: auto; }
+.CodeMirror-wrap .CodeMirror-scroll { overflow-x: hidden; }
+.CodeMirror-measure { position: absolute; width: 100%; height: 0px; overflow: hidden; visibility: hidden; }
+.CodeMirror-measure pre { position: static; }
+.CodeMirror div.CodeMirror-cursor { position: absolute; visibility: hidden; border-right: none; width: 0px; }
+.CodeMirror div.CodeMirror-cursor { visibility: hidden; }
+.CodeMirror-focused div.CodeMirror-cursor { visibility: inherit; }
+.cm-searching { background: rgba(255, 255, 0, 0.4); }
+span.cm-underlined { text-decoration: underline; }
+span.cm-strikethrough { text-decoration: line-through; }
+.cm-tw-syntaxerror { color: rgb(255, 255, 255); background-color: rgb(153, 0, 0); }
+.cm-tw-deleted { text-decoration: line-through; }
+.cm-tw-header5 { font-weight: 700; }
+.cm-tw-listitem:first-child { padding-left: 10px; }
+.cm-tw-box { border-style: solid; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-color: inherit; border-top-width: 0px !important; }
+.cm-tw-underline { text-decoration: underline; }
+@media print {
+  .CodeMirror div.CodeMirror-cursor { visibility: hidden; }
+}
+
+
+:root {
+    --side-bar-bg-color: #fafafa;
+    --control-text-color: #777;
+}
+
+@include-when-export url(https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext);
+
+/* open-sans-regular - latin-ext_latin */
+  /* open-sans-italic - latin-ext_latin */
+    /* open-sans-700 - latin-ext_latin */
+    /* open-sans-700italic - latin-ext_latin */
+  html {
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+}
+
+body {
+    font-family: "Open Sans","Clear Sans", "Helvetica Neue", Helvetica, Arial, 'Segoe UI Emoji', sans-serif;
+    color: rgb(51, 51, 51);
+    line-height: 1.6;
+}
+
+#write {
+    max-width: 860px;
+  	margin: 0 auto;
+  	padding: 30px;
+    padding-bottom: 100px;
+}
+
+@media only screen and (min-width: 1400px) {
+	#write {
+		max-width: 1024px;
+	}
+}
+
+@media only screen and (min-width: 1800px) {
+	#write {
+		max-width: 1200px;
+	}
+}
+
+#write > ul:first-child,
+#write > ol:first-child{
+    margin-top: 30px;
+}
+
+a {
+    color: #4183C4;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    position: relative;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    line-height: 1.4;
+    cursor: text;
+}
+h1:hover a.anchor,
+h2:hover a.anchor,
+h3:hover a.anchor,
+h4:hover a.anchor,
+h5:hover a.anchor,
+h6:hover a.anchor {
+    text-decoration: none;
+}
+h1 tt,
+h1 code {
+    font-size: inherit;
+}
+h2 tt,
+h2 code {
+    font-size: inherit;
+}
+h3 tt,
+h3 code {
+    font-size: inherit;
+}
+h4 tt,
+h4 code {
+    font-size: inherit;
+}
+h5 tt,
+h5 code {
+    font-size: inherit;
+}
+h6 tt,
+h6 code {
+    font-size: inherit;
+}
+h1 {
+    font-size: 2.25em;
+    line-height: 1.2;
+    border-bottom: 1px solid #eee;
+}
+h2 {
+    font-size: 1.75em;
+    line-height: 1.225;
+    border-bottom: 1px solid #eee;
+}
+
+/*@media print {
+    .typora-export h1,
+    .typora-export h2 {
+        border-bottom: none;
+        padding-bottom: initial;
+    }
+
+    .typora-export h1::after,
+    .typora-export h2::after {
+        content: "";
+        display: block;
+        height: 100px;
+        margin-top: -96px;
+        border-top: 1px solid #eee;
+    }
+}*/
+
+h3 {
+    font-size: 1.5em;
+    line-height: 1.43;
+}
+h4 {
+    font-size: 1.25em;
+}
+h5 {
+    font-size: 1em;
+}
+h6 {
+   font-size: 1em;
+    color: #777;
+}
+p,
+blockquote,
+ul,
+ol,
+dl,
+table{
+    margin: 0.8em 0;
+}
+li>ol,
+li>ul {
+    margin: 0 0;
+}
+hr {
+    height: 2px;
+    padding: 0;
+    margin: 16px 0;
+    background-color: #e7e7e7;
+    border: 0 none;
+    overflow: hidden;
+    box-sizing: content-box;
+}
+
+li p.first {
+    display: inline-block;
+}
+ul,
+ol {
+    padding-left: 30px;
+}
+ul:first-child,
+ol:first-child {
+    margin-top: 0;
+}
+ul:last-child,
+ol:last-child {
+    margin-bottom: 0;
+}
+blockquote {
+    border-left: 4px solid #dfe2e5;
+    padding: 0 15px;
+    color: #777777;
+}
+blockquote blockquote {
+    padding-right: 0;
+}
+table {
+    padding: 0;
+    word-break: initial;
+}
+table tr {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 0;
+}
+table tr:nth-child(2n),
+thead {
+    background-color: #f8f8f8;
+}
+table th {
+    font-weight: bold;
+    border: 1px solid #dfe2e5;
+    border-bottom: 0;
+    margin: 0;
+    padding: 6px 13px;
+}
+table td {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 6px 13px;
+}
+table th:first-child,
+table td:first-child {
+    margin-top: 0;
+}
+table th:last-child,
+table td:last-child {
+    margin-bottom: 0;
+}
+
+.CodeMirror-lines {
+    padding-left: 4px;
+}
+
+.code-tooltip {
+    box-shadow: 0 1px 1px 0 rgba(0,28,36,.3);
+    border-top: 1px solid #eef2f2;
+}
+
+.md-fences,
+code,
+tt {
+    border: 1px solid #e7eaed;
+    background-color: #f8f8f8;
+    border-radius: 3px;
+    padding: 0;
+    padding: 2px 4px 0px 4px;
+    font-size: 0.9em;
+}
+
+code {
+    background-color: #f3f4f4;
+    padding: 0 2px 0 2px;
+}
+
+.md-fences {
+    margin-bottom: 15px;
+    margin-top: 15px;
+    padding-top: 8px;
+    padding-bottom: 6px;
+}
+
+
+.md-task-list-item > input {
+  margin-left: -1.3em;
+}
+
+@media print {
+    html {
+        font-size: 13px;
+    }
+    table,
+    pre {
+        page-break-inside: avoid;
+    }
+    pre {
+        word-wrap: break-word;
+    }
+}
+
+.md-fences {
+	background-color: #f8f8f8;
+}
+#write pre.md-meta-block {
+	padding: 1rem;
+    font-size: 85%;
+    line-height: 1.45;
+    background-color: #f7f7f7;
+    border: 0;
+    border-radius: 3px;
+    color: #777777;
+    margin-top: 0 !important;
+}
+
+.mathjax-block>.code-tooltip {
+	bottom: .375rem;
+}
+
+.md-mathjax-midline {
+    background: #fafafa;
+}
+
+#write>h3.md-focus:before{
+	left: -1.5625rem;
+	top: .375rem;
+}
+#write>h4.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h5.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h6.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+.md-image>.md-meta {
+    /*border: 1px solid #ddd;*/
+    border-radius: 3px;
+    padding: 2px 0px 0px 4px;
+    font-size: 0.9em;
+    color: inherit;
+}
+
+.md-tag {
+    color: #a7a7a7;
+    opacity: 1;
+}
+
+.md-toc { 
+    margin-top:20px;
+    padding-bottom:20px;
+}
+
+.sidebar-tabs {
+    border-bottom: none;
+}
+
+#typora-quick-open {
+    border: 1px solid #ddd;
+    background-color: #f8f8f8;
+}
+
+#typora-quick-open-item {
+    background-color: #FAFAFA;
+    border-color: #FEFEFE #e5e5e5 #e5e5e5 #eee;
+    border-style: solid;
+    border-width: 1px;
+}
+
+/** focus mode */
+.on-focus-mode blockquote {
+    border-left-color: rgba(85, 85, 85, 0.12);
+}
+
+header, .context-menu, .megamenu-content, footer{
+    font-family: "Segoe UI", "Arial", sans-serif;
+}
+
+.file-node-content:hover .file-node-icon,
+.file-node-content:hover .file-node-open-state{
+    visibility: visible;
+}
+
+.mac-seamless-mode #typora-sidebar {
+    background-color: #fafafa;
+    background-color: var(--side-bar-bg-color);
+}
+
+.md-lang {
+    color: #b4654d;
+}
+
+/*.html-for-mac {
+    --item-hover-bg-color: #E6F0FE;
+}*/
+
+#md-notification .btn {
+    border: 0;
+}
+
+.dropdown-menu .divider {
+    border-color: #e5e5e5;
+    opacity: 0.4;
+}
+
+.ty-preferences .window-content {
+    background-color: #fafafa;
+}
+
+.ty-preferences .nav-group-item.active {
+    color: white;
+    background: #999;
+}
+
+.menu-item-container a.menu-style-btn {
+    background-color: #f5f8fa;
+    background-image: linear-gradient( 180deg , hsla(0, 0%, 100%, 0.8), hsla(0, 0%, 100%, 0)); 
+}
+
+
+
+</style><title>Chancylaser大佬做题记录md</title>
+</head>
+<body class='typora-export os-windows'><div class='typora-export-content'>
+<div id='write'  class=''><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="c++"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="c++"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 9.5px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">樱花落下的速度是每秒五厘米，</span> <span class="cm-variable">我该用怎么样的速度，才能与你相遇。——《秒速五厘米》</span></span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">雨滴降落的速度是每秒十米，我该用怎么样的速度，才能将你挽留。——《言叶之庭》</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">陨石坠落的速度是每秒十千米，我该用怎么样的速度，才能将你拯救。——《你的名字》</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">阳光射下的速度是每秒三亿米，我该用什么样的速度，才能与你共生活。——《天气之子》</span></span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 92px;"></div><div class="CodeMirror-gutters" style="display: none; height: 92px;"></div></div></div></pre><p><strong><span>搬</span><a href='https://www.luogu.com/user/241817'><span>Chancylaser</span></a><span>大佬的做题记录</span></strong></p><p>&nbsp;</p><h3 id='p2168-noi2015-荷马史诗-by-20221228'><span>P2168 [NOI2015] 荷马史诗 by 2022/12/28</span></h3><p><span>多叉哈夫曼树板子题。</span></p><p><span>这东西似乎玩不出花来，大概2015年考完后不会再考了。</span></p><hr /><h3 id='p2085-最小函数值-by-20221229'><span>P2085 最小函数值 by 2022/12/29</span></h3><p><span>水题，不过这道题的思想可以记录一下。</span></p><p><span>根据状态的变化，每次将变化后的状态入堆，从而获得答案。</span></p><h3 id='p2827-noip2016-提高组-蚯蚓-by-20221229'><span>P2827 [NOIP2016 提高组] 蚯蚓 by 2022/12/29</span></h3><p><span>这道题我用队列解决的，堆的做法只能拿到80左右。</span></p><p><span>发现单调的性质，开三个队列分别记录：初始序列；第一个部分；第二个部分。</span></p><p><span>然后通过单调性的性质，队列模拟即可。其中记录了一个值，表示每一秒加的q的总和，这块的处理很有意思。</span></p><h3 id='p3045-usaco12febcow-coupons-g-by-20221229'><span>P3045 [USACO12FEB]Cow Coupons G by 2022/12/29</span></h3><p><span>贪心+堆的好题。</span></p><p><span>通过对优惠价的排序，然后在小根堆里插入原价与优惠价的差，最后在通过反悔贪心来优化策略。</span></p><h3 id='p1462-通往奥格瑞玛的道路-by-20221229'><span>P1462 通往奥格瑞玛的道路 by 2022/12/29</span></h3><p><span>简单的 二分+最短路。</span></p><p><span>二分能经过的最大的点权，然后跑最短路。如果最短路都到达不了n号点，那么显然需要调大二分的mid值，否则往小里调。</span></p><h3 id='p1419-寻找段落-by-20221229'><span>P1419 寻找段落 by 2022/12/29</span></h3><p><span>实数二分+单调队列 简单题。</span></p><p><span>ps：如果 l-r 这些数中，每个数都减去一个数k，然后把每个数加起来得到区间和sum，如果sum&gt;0，则说明k比 l-r 这些数的平均数小。</span></p><p><span>二分平均值。单调队列维护的是区间最小值，因为要计算当前 i 前面所能匹配的区间的最大区间和sum，显然当sum[i]减一个最小的数得到的数最大。然后判断这个结果是否大于0即可。</span></p><h3 id='p1083-noip2012-提高组-借教室-by-20221230'><span>P1083 [NOIP2012 提高组] 借教室 by 2022/12/30</span></h3><p><span>二分简单题。</span></p><p><span>注意l的初始值，如果最后输出l+1，l的初始值应该设置为0。check里利用差分来判断是否符合要求。</span></p><h3 id='p1314-noip2011-提高组-聪明的质监员-by-20221230'><span>P1314 [NOIP2011 提高组] 聪明的质监员 by 2022/12/30</span></h3><p><span>与借教室类似。二分简单题。</span></p><p><span>check有一个前缀和预处理。</span></p><h3 id='p3745-六省联考-2017-期末考试-by-20221231'><span>P3745 [六省联考 2017] 期末考试 by 2022/12/31</span></h3><p><span>三分简单题。</span></p><p><span>两个函数，分别处理AB的情况、C的情况。注意三分的是到p的时间来计算需要的花费。</span></p><p><span>注意特判。</span></p><hr /><h3 id='p4155-scoi2015国旗计划-by-202311'><span>P4155 [SCOI2015]国旗计划 by 2023/1/1</span></h3><p><span>简单的贪心+倍增优化。</span></p><p><span>贪心后发现实现起来是平方级别的，所以考虑优化。发现数据是静态不变的，结合倍增的性质，所以使用倍增优化。时间复杂度O(n log n)。</span></p><p><span>需要格外注意</span><strong><span>破环成链</span></strong><span>的细节。</span></p><h3 id='p1198-jsoi2008-最大数-by-202311-实际上提交时间已经到了二号了）'><span>P1198 [JSOI2008] 最大数 by 2023/1/1 （实际上提交时间已经到了二号了）</span></h3><p><span>st表的微进阶操作。</span></p><p><span>初始序列为空，动态增加数据。这动态修改似乎只能用线段树等在线数据结构维护，但其实st表也能维护，因为修改只在序列最后。这里的修改指添加一个数。</span></p><p><span>实际上，假设添加后序列长度为n，设f是st数组，我们只需要找出f</span>[<span>i</span>][j]<span>，也就是i往后(1&lt;&lt;j)个数，最后一个数为n，修改这些就可以了，显然最大的修改数为log2(n)。</span></p><p><span>查询为st表常规查询。</span></p><h3 id='p5648-mivik的神力-by-202312'><span>P5648 Mivik的神力 by 2023/1/2</span></h3><p><span>倍增好题。</span></p><p><span>首先需要一个单调栈来维护a[i]下一个&gt;=它的数的位置，然后倍增就可以了，注意开LL。</span></p><p><span>感觉单调栈是倍增题目的常见预处理技巧。</span></p><h3 id='p1081-noip2012-提高组-开车旅行-by-202313'><span>P1081 [NOIP2012 提高组] 开车旅行 by 2023/1/3</span></h3><p><span>对我来说较困难的倍增，预处理了5个数组，代码写了120+行。</span></p><p><span>用了大量的STL，具体细节不好描述。</span></p><h3 id='p3948-数据结构-by-202314'><span>P3948 数据结构 by 2023/1/4</span></h3><p><span>这是一道水蓝，感觉难度只能到绿。</span></p><p><span>发现修改多，查询少，故马上反应过来这是一道差分题。发现了这个性质，裸差分、前缀和套上去就能过，跑得还挺快。</span><del><span>随机数据</span></del></p><h3 id='p4552-poetize6-incdec-sequence-by-202314'><span>P4552 [Poetize6] IncDec Sequence by 2023/1/4</span></h3><p><span>差分好题，可能不难，但是非常有助于理解差分的用法及性质。</span></p><p><span>首先求出原序列的差分数组，然后统计差分数组所有正数的绝对值和所有负数的绝对值。然后简单输出即可。</span></p><p><span>具体推算可以去看题解。</span></p><h3 id='一月五号出去玩了一天晚上打了个cf没刷题'><del><span>一月五号出去玩了一天，晚上打了个CF，没刷题。</span></del></h3><h3 id='p1052-noip2005-提高组-过河-by-202316'><span>P1052 [NOIP2005 提高组] 过河 by 2023/1/6</span></h3><p><span>分析题目，很容易设计出一个暴力DP。但是发现需要枚举的L太长。</span>
+<span>继续观察题目，发现石子的数量极其得少，简单一想便能推出，过于长的空地其实可以忽略掉。所以考虑类似缩点的操作，先对石子排序，假如两个相邻的石子距离很大，那么我们缩小到一个固定的值w，如果距离小于等于这个w则不变。这样的话，暴力DP即可通过。</span></p><p><span>离散化的思想，好题。</span></p><h3 id='p2652-同花顺-by-202316'><span>P2652 同花顺 by 2023/1/6</span></h3><p><span>题意很简单。首先离散化，把花色和数字相同的牌扔掉直到只留下一张。然后以花色为第一关键字，数字为第二关键字排序。</span></p><p><span>从1开始枚举，枚举的是我们最终要构成的顺子的最后端点。显然，我们需要留下尽量多的牌数。我们这里开一个队列维护。</span>
+<span>如果当前的花色与上一张的花色不同，我们显然应该清空候选答案；否则，则判断当前的数字与队列中第一个元素的差值是否&gt;=n，如果成立，则pop掉这个元素。while完这个操作后，再push当前枚举到的数字。此时答案显然就是(n-队列长度)。打擂法记下答案即可。</span></p><hr /><h3 id='咕咕咕又咕了好几天以下的题目的笔记写得时候已经到11号了'><span>咕咕咕，又咕了好几天。以下的题目的笔记，写得时候已经到11号了</span></h3><hr /><h3 id='p1593-因子和-by-202317'><span>P1593 因子和 by 2023/1/7</span></h3><p><span>简易的题意能让我们快速了解题目问得什么。</span></p><p><span>利用整数的唯一分解定理，然后推推式子即可解决，利用了一些高中的知识。另外模运算这一块的处理很有意思。</span></p><h3 id='p2672-noip2015-普及组-推销员-by-202318'><span>P2672 [NOIP2015 普及组] 推销员 by 2023/1/8</span></h3><p><span>贪心的经典好题。</span></p><p><span>首先肯定得排序，容易发现：只需舍去最小值来走更远，无需舍去更多数来走更远。然后预处理几个数组解决此题。贪心的题目主要是思路，代码一般不难。</span></p><h3 id='p1080-noip2012-提高组-国王游戏-by-202318'><span>P1080 [NOIP2012 提高组] 国王游戏 by 2023/1/8</span></h3><p><span>又是一道贪心的经典好题。</span></p><p><span>首先把当前的大臣左右手的表达式写出来，然后通过推式子，发现只要以a*b为关键字排序即可。</span></p><p><span>不过这道题目需要高精度，有点小烦人。</span></p><h3 id='p2123-皇后游戏-by-202318'><span>P2123 皇后游戏 by 2023/1/8</span></h3><p><span>较难的贪心题目。</span></p><p><span>还是推式子，只不过这式子比国王游戏难上很多。推出来后，发现以那玩意为关键字排序是错的，因为没有使排序能满足传递性，所以需要加点东西，使它满足传递性。</span></p><p><span>一种解决的办法是，令 ��=��−��∣��−��∣</span><em><span>d**i</span></em><span>=∣</span><em><span>a**i</span></em><span>−</span><em><span>b**i</span></em><span>∣</span><em><span>a**i</span></em><span>−</span><em><span>b**i</span></em><span>。然后，先按d值为关键字排序；然后若d值小于等于0，按a升序排序；若d值大于0，则按b降序排序，这样就可以满足传递性了。</span></p><h3 id='p5521-yloi2019-梅深不见冬-by-202318'><span>P5521 [yLOI2019] 梅深不见冬 by 2023/1/8</span></h3><p><span>较难的贪心题目。</span></p><p><span>发现这次需要我们贪心的目标转移到了树上。贪心的题目，都需要推一推式子，也需要排序。然后维护一个类似树上前缀和的东西即可解决问题。</span></p><hr /><h2 id='这一周完结'><span>这一周，完结！</span></h2><h3 id='p5194-usaco05decscales-s-by-202319'><span>P5194 [USACO05DEC]Scales S by 2023/1/9</span></h3><p><del><span>传闻这个黄题原来是紫色的，然后被出题人发现可以用简单的解法解决后，降到黄色了。</span></del></p><p><span>简单的搜索。</span></p><p><span>注意，题目中强调的序列性质实际上和斐波那契数列差不多，增长得极快。所以题目中这么大的数据范围是骗人的，用搜索解决即可。</span></p><h3 id='910号的whk任务有点重没怎么刷题'><del><span>9、10号的whk任务有点重，没怎么刷题。</span></del></h3><h3 id='p5440-xr-2奇迹-by-2023111'><span>P5440 【XR-2】奇迹 by 2023/1/11</span></h3><p><span>又是一道搜索的题目。不过，这个题目我写了150行。</span></p><p><span>题意很简单，明白后很容易想到用搜索解决。然后写着写着发现不太对。月份天数不是相同的、闰年等细节也需要处理，由于是大模拟，不太容易查错，最后对拍才找出2个错误，然后就过了。</span></p><h3 id='p1378-油滴扩展-by-20231123-提交得慢了导致到了13号）'><span>P1378 油滴扩展 by 2023/1/12(3) (提交得慢了导致到了13号）</span></h3><p><span>DFS进阶之必刷题。</span></p><p><span>这道题显然已经不是裸DFS了，需要加入一些思考，不过仍然简单。</span></p><p><span>可以发现如果目前的油滴在之前已经扩散的油滴范围的里面或者边界，目前的油滴便已经没有用处了，所以需要预处理出每两个油滴之间的距离，于是简单地通过此题。</span></p><h3 id='noip2017-普及组-棋盘-by-2023113还是13号凌晨做得）'><span>[NOIP2017 普及组] 棋盘 by 2023/1/13（还是13号凌晨做得）</span></h3><p><span>一道较为简单的BFS。</span></p><p><span>其实可以抽象成：往上下左右可以走一步；往左上、右上、左下、右下、左二、右二、上二、下二 可以走两步（额外价钱为2）。然后就是一道简单的走迷宫题目了。</span></p><p><span>细节处理：如果本来(m,m)就没有颜色，那么需要特判。即如果(m-1,m)或(m,m-1)都走不到，那么(m,m)也走不到了。</span></p><h3 id='p1032-noip2002-提高组-字串变换-by-2023113'><span>P1032 [NOIP2002 提高组] 字串变换 by 2023/1/13</span></h3><p><span>感觉这道题可以黄？特简单BFS的板子题。</span></p><p><span>根据BFS的最短性，只要搜到答案一定是最少的方案数，于是直接输出结束程序就可以了。</span></p><p><span>然后接下来的那一个循环，外层枚举规则，内层枚举主串的位置，看看能否进行替换。需要注意的是，不能直接对主串进行替换，而是需要开一个格外的string，来存储新的串，注意不要忘记加上这个位置之前和之后的剩余串。</span></p><h3 id='p1126-机器人搬重物-by-20231134啊啊啊提交时间又到了下一天）'><span>P1126 机器人搬重物 by 2023/1/13(4)（啊啊啊提交时间又到了下一天）</span></h3><p><span>相对于P1032而言，这道题目显然困难得多，属于中上位的绿题。主要考察BFS及STL（我的做法用得这些）。</span></p><p><span>题意比较容易理解，但是机器人是个圆形怎么处理呢，其实意思就是它一次会占4个格子，处理的时候多注意一下就好了。然后机器人还有东、西、南、北四个方向，以及5种不同的操作。</span></p><p><span>大力BFS即可，细节比较多。不过我一遍就过了。</span></p><h3 id='p1433-吃奶酪-by-2023114'><span>P1433 吃奶酪 by 2023/1/14</span></h3><p><span>正解是状压dp，不过我用搜索（DFS）过了。</span></p><p><span>首先剪枝要处理好，调好参数，卡好时间。剪枝思路很好想，这里说一下如何通过卡场+调参通过此题。</span></p><p><span>首先控制好递归次数，因为提交是IOI的实时返回结果，所以我们可以通过小技巧来获取测试点的大体信息。调的好像我一样就能AC第一个subtask。</span></p><p><span>第二个subtask就是专门卡非正解的。第一个测试点会有大量的奶酪，去重即可。第二、三个测试点过于毒瘤，搜索极难过去，我想了好半天都无法解决，只好通过其它方法真正AC此题。如果有哪位大佬的搜索可以直接通过此题，求私信讲解/kel。</span></p><h3 id='sp30919-gcds---sabbir-and-gcd-problem-by-20231145）提交时间叒叒叒到了下一天）'><span>SP30919 GCDS - Sabbir and gcd problem by 2023/1/14（5）（提交时间叒叒叒到了下一天）</span></h3><p><span>简单的数论套路题。</span></p><p><span>显然答案是一个质数。找到无法被这n个数约分的最小质数即可。我使用了线性筛和一点点小技巧解决此题。</span></p><p><span>线性筛里需要预处理出一个数的最小质因子。质数的最小质因子显然是它本身；非质数通过线性筛的特性，可以得出为我们内层循环枚举的质数。</span></p><p><span>之后我们要对每一个ai质因数分解。注意，这里直接j从1~sqrt(ai)时间复杂度太高，所以我们刚才预处理的最小质因子就有用了。每次除的时候标记即可，这样，质因数分解时间复杂度便可以降到O(nlogn)。妥妥通过此题。</span></p><hr /><h3 id='p1120-小木棍-by-202311718评测时间到了18号）'><span>P1120 小木棍 by 2023/1/17(18)（评测时间到了18号）</span></h3><p><span>典中典的题目。做法是有技巧的剪枝优化搜索。</span></p><p><span>最暴力的搜索很好打，然后考虑优化。优化方式很多种，发现常规的几种优化被最后一个点卡（悲），那就加一些常数优化，简单通过此题。</span></p><p><span>有</span><a href='https://www.luogu.com.cn/problem/UVA307'><span>双倍经验</span></a><span>。</span></p><p>&nbsp;</p><p>&nbsp;</p></div></div>
+</body>
+</html>
